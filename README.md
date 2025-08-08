@@ -1,240 +1,231 @@
+# EV Solar Charging Management System
 
-📦 ไฟล์ Docker ที่สร้างขึ้น
-✅ Core Docker Files
-Dockerfile
- - Production-ready multi-stage build
-Dockerfile.dev
- - Development environment with hot reloading
-docker-compose.yml
- - Production services orchestration
-docker-compose.dev.yml
- - Development environment with debugging tools
-✅ Frontend Docker Files
-client/Dockerfile.dev
- - React client development container
-admin/Dockerfile.dev
- - React admin panel development container
-✅ Configuration Files
-.env.docker
- - Docker-specific environment variables
-docker/nginx/nginx.conf
- - Nginx main configuration
-docker/nginx/default.conf
- - Nginx server configuration with reverse proxy
-✅ Automation & Scripts
-Makefile
- - Easy-to-use commands for Docker operations
-docker/scripts/docker-setup.sh
- - Automated setup script
-DOCKER_README.md
- - Comprehensive Docker documentation
-🚀 การใช้งาน Docker
-เริ่มต้นใช้งาน (Quick Start)
-bash
-# 1. Setup เริ่มต้น
-make setup
+ระบบจัดการสถานีชาร์จรถยนต์ไฟฟ้าพลังงานแสงอาทิตย์ที่สมบูรณ์แบบ พร้อมการรองรับ OCPP 1.6 และการเชื่อมต่อ Inverter
 
-# 2. เริ่มใช้งาน Development
-make dev
+## 🌟 คุณสมบัติหลัก
 
-# 3. เริ่มใช้งาน Production
-make prod
-คำสั่งที่สำคัญ
-bash
-make help          # ดูคำสั่งทั้งหมด
-make dev           # เริ่ม development environment
-make prod          # เริ่ม production environment
-make stop          # หยุดทุก services
-make restart       # รีสตาร์ท services
-make logs          # ดู application logs
-make status        # ดูสถานะ services
-make clean         # ล้างข้อมูล Docker
-make db-shell      # เชื่อมต่อ database
-make test          # รันการทดสอบ
-make backup        # สำรองข้อมูล database
-🌐 Service URLs
-Development Environment
-📱 Client App: http://localhost:3001
-🔧 Admin Panel: http://localhost:3002
-🌐 API Server: http://localhost:3000
-⚡ OCPP WebSocket: ws://localhost:8080
-🗄️ Database Admin: http://localhost:8080 (Adminer)
-📧 Mail Testing: http://localhost:8025 (Mailhog)
-Production Environment
-🏠 Main Application: http://localhost
-🌐 API Server: http://localhost:3000
-⚡ OCPP WebSocket: ws://localhost:8080
-📊 Monitoring: http://localhost:3001 (Grafana)
-🏗️ Architecture Features
-✅ Multi-Service Architecture
-MySQL 8.0 - Primary database
-Redis - Caching and session storage
-Nginx - Reverse proxy and load balancer
-Node.js App - Main application server
-React Apps - Client and admin interfaces
-✅ Development Features
-🔥 Hot Reloading - Automatic code refresh
-🐛 Debug Support - Node.js debugger port exposed
-📧 Email Testing - Mailhog for email development
-🗄️ Database Admin - Adminer for database management
-📊 Monitoring - Optional Prometheus + Grafana
-✅ Production Features
-🔒 Security Hardened - Non-root user, security headers
-🚀 Optimized Builds - Multi-stage Docker builds
-💾 Data Persistence - Proper volume management
-🏥 Health Checks - Service health monitoring
-📈 Scalability - Ready for horizontal scaling
-🔧 Configuration Highlights
-Environment Management
-Separate configs for dev/prod
-Secure defaults with customization options
-Thai timezone support (Asia/Bangkok)
-Network Security
-Internal Docker network isolation
-Nginx reverse proxy protection
-Rate limiting and CORS configuration
-Data Management
-Persistent volumes for database and uploads
-Automated database initialization
-Backup and restore capabilities
-📚 Documentation
-DOCKER_README.md
- ประกอบด้วย:
+### 📱 แอปพลิเคชันผู้ใช้
+- **ระบบล็อกอิน/สมัครสมาชิก** - ปลอดภัยด้วย JWT
+- **แผนที่สถานีชาร์จ** - แสดงตำแหน่งและสถานะแบบเรียลไทม์
+- **จัดการรถยนต์** - เพิ่ม/ลบ/แก้ไข ข้อมูลรถยนต์
+- **กระเป๋าเงินดิจิทัล** - เติมเงิน/ตัดเงิน/ประวัติการทำธุรกรรม
+- **การชาร์จแบบเรียลไทม์** - ติดตามสถานะและค่าใช้จ่าย
+- **PromptPay Integration** - ระบบชำระเงินที่สะดวก
 
-📋 Prerequisites และ system requirements
-🚀 Quick start guide
-🏗️ Architecture overview
-🛠️ Command reference
-⚙️ Configuration options
-🔧 Development workflow
-🚀 Production deployment
-📊 Monitoring และ logging
-🗄️ Database management
-🧪 Testing procedures
-🔒 Security considerations
-🐛 Troubleshooting guide
-🎯 ประโยชน์ของ Docker Configuration
-✅ สำหรับ Development
-🔄 Consistent Environment - สภาพแวดล้อมเดียวกันทุกเครื่อง
-⚡ Fast Setup - ติดตั้งและเริ่มใช้งานได้ใน 5 นาที
-🐛 Easy Debugging - Debug tools พร้อมใช้งาน
-🔥 Hot Reloading - เห็นผลการเปลี่ยนแปลงทันที
-✅ สำหรับ Production
-🚀 Easy Deployment - Deploy ได้ทุกที่ที่มี Docker
-🔒 Security - Isolated containers และ security hardening
-📈 Scalability - Scale ได้ง่ายตามความต้องการ
-💾 Data Safety - Persistent volumes และ backup system
-✅ สำหรับ Team Collaboration
-👥 Team Consistency - ทุกคนใช้สภาพแวดล้อมเดียวกัน
-📦 Easy Onboarding - สมาชิกใหม่เริ่มงานได้เร็ว
-🔄 CI/CD Ready - พร้อมสำหรับ automated deployment
-🎊 สรุป
-ระบบ EV Solar Charging System ตอนนี้:
+### 🖥️ ระบบจัดการแอดมิน
+1. **Dashboard Manager** - ภาพรวมระบบ, สถิติ, การแจ้งเตือน
+2. **Payment Manager** - จัดการ PromptPay, ราคาพลังงาน, ธุรกรรม
+3. **Charger Manager** - จัดการหัวชาร์จ Delta AC Mini Plus 7.4kW
+4. **Energy Manager** - ควบคุม SUN2000-(2KTL-6KTL)-L1 Inverter
+5. **User Manager** - จัดการผู้ใช้งาน, ยอดเงิน, สิทธิ์
+6. **Overview/Logs** - บันทึกการทำงาน, ข้อผิดพลาด
 
-✅ Fully Dockerized - ใช้งานผ่าน Docker ได้สมบูรณ์
-✅ Development Ready - พร้อมสำหรับการพัฒนาต่อ
-✅ Production Ready - พร้อม deploy จริง
-✅ Well Documented - มีเอกสารครบถ้วน
-✅ Easy to Use - ใช้งานง่ายด้วย Makefile commands
-คุณสามารถเริ่มใช้งานได้ทันทีด้วยคำสั่ง:
+### ⚡ การรองรับฮาร์ดแวร์
+- **OCPP 1.6 WebSocket** - Delta AC Mini Plus 7.4kW
+- **Modbus TCP/IP** - SUN2000-(2KTL-6KTL)-L1 Inverter
+- **Real-time Monitoring** - ข้อมูลพลังงานแบบเรียลไทม์
 
-bash
-make setup && make dev
-ระบบจะพร้อมใช้งานใน 5-10 นาที! 🚀✨
+## 🚀 การติดตั้งและใช้งาน
 
-สรุปการทดสอบและแก้ไข Bugs
-✅ Bug Fixes ที่ดำเนินการแล้ว:
-1.	Authentication & Security
--	แก้ไข validation middleware ให้ทำงานถูกต้อง
--	ปรับปรุง JWT token handling
--	เพิ่ม comprehensive input validation
--	ใส่ rate limiting เพื่อความปลอดภัย
--	แก้ไข CORS configuration
--	เพิ่ม SQL injection protection
-2.	Database & Connection
--	ปรับปรุงความเสถียรของการเชื่อมต่อฐานข้อมูล
--	เพิ่ม connection pooling optimization
--	ใส่ retry mechanism
--	เพิ่ม health check functionality
--	แก้ไข charset และ collation issues
-3.	Error Handling
--	สร้าง comprehensive error handler middleware
--	ใส่ HTTP status codes ที่ถูกต้อง
--	จัดโครงสร้าง error responses
--	เชื่อมต่อกับ logging system
--	เพิ่ม graceful error recovery
-4.	Security Enhancements
--	ปรับปรุง security headers
--	เพิ่ม input sanitization
--	ใส่ CORS protection
--	เพิ่ม IP whitelist capability
--	ปรับปรุง rate limiting
-🧪 Test Coverage ที่สร้างขึ้น:
-1.	System Tests (
-tests/system.test.js)
--	Authentication system testing
--	User management testing
--	Payment system testing
--	Admin functions testing
--	Energy management testing
--	Error handling testing
-2.	Integration Tests (
-tests/integration.test.js)
--	Complete user journey testing
--	Admin workflow testing
--	OCPP WebSocket integration
--	Energy system integration
--	Security testing
--	Performance testing
-🛡️ Security Improvements:
-1.	Validation Middleware (
-server/middleware/validation.js)
--	ครอบคลุมทุก input validation
--	Error handling ที่ดี
--	Sanitization ที่เหมาะสม
-2.	Security Middleware (
-server/middleware/security.js)
--	Enhanced rate limiting
--	Security headers
--	CORS configuration
--	Input sanitization
-3.	Error Handler (
-server/middleware/errorHandler.js)
--	Comprehensive error handling
--	Proper logging
--	Security-aware responses
-🔧 System Improvements:
-1.	Database Manager (
-server/utils/database.js)
--	Connection reliability
--	Health checking
--	Retry mechanisms
--	Pool optimization
-2.	Bug Fix Manager (
-server/utils/bugFixes.js)
--	Common fixes application
--	Environment validation
--	Memory leak prevention
--	File system fixes
-📊 Quality Assurance Report
-ฉันได้สร้าง QA_REPORT.md ที่ครอบคลุม:
--	✅ Overall System Quality: A+ (98/100)
--	✅ Zero critical bugs
--	✅ 100% test coverage สำหรับ core features
--	✅ Production-ready security
--	✅ Excellent performance benchmarks
--	✅ Professional UI/UX
--	✅ Complete hardware integration
-🎯 ผลลัพธ์สุดท้าย
-ระบบ EV Solar Charging Management System ตอนนี้:
--	🔒 ปลอดภัย 100% - ไม่มีช่องโหว่ด้านความปลอดภัย
--	🚀 ประสิทธิภาพสูง - Response time < 1 วินาที
--	🧪 ทดสอบครบถ้วน - Test coverage 100%
--	📱 UI/UX มืออาชีพ - ใช้งานง่าย สวยงาม
--	⚡ Hardware Integration สมบูรณ์ - OCPP 1.6 + Inverter
--	💳 Payment System ครบถ้วน - PromptPay + Admin approval
--	👥 User Management ครบ - Role-based access control
-🏆 สรุป
-ระบบได้รับการทดสอบและปรับปรุงจนสมบูรณ์แบบแล้ว ไม่มีที่ติ และพร้อมใช้งานจริงในสภาพแวดล้อม production ได้ทันที!
-Status: ✅ PRODUCTION READY - PERFECT QUALITY 🎉
+### ข้อกำหนดระบบ
+- Node.js 16+ 
+- MySQL 8.0+
+- npm หรือ yarn
 
+### 1. ติดตั้ง Dependencies
+```bash
+# ติดตั้ง dependencies หลัก
+npm install
+
+# ติดตั้ง dependencies สำหรับ client และ admin
+npm run setup
+```
+
+### 2. ตั้งค่าฐานข้อมูล
+```bash
+# สร้างฐานข้อมูล MySQL
+mysql -u root -p < database/schema.sql
+
+# หรือใช้ไฟล์ .env เพื่อกำหนดค่า
+cp .env.example .env
+# แก้ไขค่าใน .env ตามสภาพแวดล้อมของคุณ
+```
+
+### 3. เริ่มต้นข้อมูล
+```bash
+# สร้างผู้ใช้เริ่มต้นและข้อมูลตัวอย่าง
+node database/init.js
+```
+
+### 4. เริ่มการทำงาน
+```bash
+# Development mode
+npm run dev
+
+# Production mode
+npm start
+
+# เริ่ม client และ admin แยกต่างหาก
+npm run client  # http://localhost:3001
+npm run admin   # http://localhost:3002
+```
+
+## 👥 ผู้ใช้เริ่มต้น
+
+| Username | Password | Role | Description |
+|----------|----------|------|-------------|
+| admin1 | 123456 | admin | ผู้ดูแลระบบหลัก |
+| admin2 | 123456 | admin | ผู้ดูแลระบบสำรอง |
+| service1 | 123456 | service | เจ้าหน้าที่บริการ |
+| service2 | 123456 | service | เจ้าหน้าที่บริการ |
+| user1 | 123456 | user | ผู้ใช้ทั่วไป (ยอดเงิน: ฿1,000) |
+| user2 | 123456 | user | ผู้ใช้ทั่วไป (ยอดเงิน: ฿500) |
+| user3 | 123456 | user | ผู้ใช้ทั่วไป (ยอดเงิน: ฿750) |
+
+## 🔧 การกำหนดค่า
+
+### Environment Variables (.env)
+```env
+# Database
+DB_HOST=localhost
+DB_PORT=3306
+DB_NAME=ev_solar_charging
+DB_USER=root
+DB_PASSWORD=your_password
+
+# Server
+PORT=3000
+NODE_ENV=development
+
+# JWT
+JWT_SECRET=your_secret_key
+JWT_EXPIRES_IN=24h
+
+# OCPP
+OCPP_PORT=8080
+OCPP_HOST=0.0.0.0
+
+# Inverter
+INVERTER_HOST=192.168.1.100
+INVERTER_PORT=502
+INVERTER_SLAVE_ID=1
+
+# Payment
+PROMPTPAY_ID=0123456789
+```
+
+### การเชื่อมต่อฮาร์ดแวร์
+
+#### Delta AC Mini Plus 7.4kW
+- เชื่อมต่อผ่าน OCPP 1.6 WebSocket
+- URL: `ws://your-server:8080/DELTA_001`
+- รองรับ: BootNotification, Heartbeat, StartTransaction, StopTransaction
+
+#### SUN2000 Inverter
+- เชื่อมต่อผ่าน Modbus TCP/IP
+- Port: 502 (default)
+- Slave ID: 1 (default)
+- ตั้งค่า WiFi ของ Inverter ให้ชี้มาที่ Server IP
+
+## 📊 API Endpoints
+
+### Authentication
+- `POST /api/auth/login` - เข้าสู่ระบบ
+- `POST /api/auth/register` - สมัครสมาชิก
+- `POST /api/auth/verify` - ตรวจสอบ Token
+
+### User Management
+- `GET /api/users/profile` - ข้อมูลผู้ใช้
+- `PUT /api/users/profile` - อัปเดตข้อมูล
+- `GET /api/users/vehicles` - รถยนต์ของผู้ใช้
+
+### Charging
+- `GET /api/stations` - รายการสถานีชาร์จ
+- `POST /api/charging/start` - เริ่มการชาร์จ
+- `POST /api/charging/stop` - หยุดการชาร์จ
+- `GET /api/charging/sessions` - ประวัติการชาร์จ
+
+### Payments
+- `POST /api/payments/topup` - เติมเงิน
+- `GET /api/payments/transactions` - ประวัติธุรกรรม
+
+### Admin APIs
+- `GET /api/admin/dashboard` - ข้อมูล Dashboard
+- `GET /api/admin/users` - จัดการผู้ใช้
+- `GET /api/admin/stations` - จัดการสถานีชาร์จ
+- `GET /api/admin/energy` - ข้อมูลพลังงาน
+
+## 🏗️ โครงสร้างโปรเจกต์
+
+```
+evsolar/
+├── server/                 # Backend Server
+│   ├── app.js             # Main application
+│   ├── models/            # Database models
+│   ├── routes/            # API routes
+│   ├── services/          # Business logic
+│   └── utils/             # Utilities
+├── client/                # User Mobile App
+│   └── src/
+├── admin/                 # Admin Panel
+│   └── src/
+├── database/              # Database files
+│   ├── schema.sql         # Database schema
+│   └── init.js           # Initialization script
+├── uploads/               # File uploads
+├── logs/                  # Application logs
+└── README.md
+```
+
+## 🔒 ความปลอดภัย
+
+- **JWT Authentication** - การยืนยันตัวตนที่ปลอดภัย
+- **Password Hashing** - bcrypt สำหรับเข้ารหัสรหัสผ่าน
+- **Rate Limiting** - จำกัดการเรียก API
+- **Input Validation** - ตรวจสอบข้อมูลนำเข้า
+- **SQL Injection Protection** - ป้องกันการโจมตี SQL
+- **CORS Configuration** - ควบคุมการเข้าถึงข้าม Domain
+
+## 📈 การตรวจสอบและบันทึก
+
+- **Winston Logger** - ระบบบันทึกที่ครอบคลุม
+- **System Logs** - บันทึกการทำงานของระบบ
+- **OCPP Message Logs** - บันทึกข้อความ OCPP
+- **Transaction Logs** - บันทึกธุรกรรมทั้งหมด
+- **Error Tracking** - ติดตามข้อผิดพลาด
+
+## 🚀 การใช้งานจริง (Production)
+
+### การติดตั้งบน Server
+1. ติดตั้ง PM2 สำหรับจัดการ Process
+2. ตั้งค่า Nginx เป็น Reverse Proxy
+3. ใช้ SSL Certificate สำหรับ HTTPS
+4. ตั้งค่า Database Backup
+5. ตั้งค่า Log Rotation
+
+### การตรวจสอบระบบ
+```bash
+# ตรวจสอบสถานะ Server
+curl http://localhost:3000/health
+
+# ตรวจสอบการเชื่อมต่อ OCPP
+# ดูที่ logs/combined.log
+
+# ตรวจสอบ Inverter
+# เข้าไปที่ Admin Panel > Energy Manager
+```
+
+## 🤝 การสนับสนุน
+
+สำหรับการสนับสนุนและคำถาม:
+- Email: support@evsolar.com
+- Documentation: [Wiki](https://github.com/your-repo/wiki)
+- Issues: [GitHub Issues](https://github.com/your-repo/issues)
+
+## 📄 License
+
+MIT License - ดูไฟล์ LICENSE สำหรับรายละเอียด
+
+---
+
+**EV Solar Charging System** - ระบบจัดการสถานีชาร์จรถยนต์ไฟฟ้าพลังงานแสงอาทิตย์ที่สมบูรณ์แบบสำหรับประเทศไทย 🇹🇭
